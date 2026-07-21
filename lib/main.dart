@@ -19,8 +19,35 @@ class MyApp extends StatelessWidget {
       title: 'eTT Mobile',
       debugShowCheckedModeBanner: false,
       theme: KptTheme.light, // AppBar auto-navy, Card auto-bulat, dll.
+      scrollBehavior: const AppScrollBehavior(), // <-- cuba tukar di kelas ni
       home: const HomeScreen(),
     );
+  }
+}
+
+/// Kelakuan skrol seluruh app — cuba tukar 2 tempat di bawah untuk rasa beza.
+class AppScrollBehavior extends MaterialScrollBehavior {
+  const AppScrollBehavior();
+
+  // KNOB 1 — kesan visual di hujung senarai:
+  //   return child;                    -> TIADA (sesuai untuk bounce iOS)
+  //   default (buang override ini)     -> STRETCH (Android 12+)
+  //   GlowingOverscrollIndicator(...)  -> GLOW (Android lama)
+  @override
+  Widget buildOverscrollIndicator(
+    BuildContext context,
+    Widget child,
+    ScrollableDetails details,
+  ) {
+    return child; // tiada stretch/glow
+  }
+
+  // KNOB 2 — cara pergerakan skrol:
+  //   BouncingScrollPhysics()  -> lantun gaya iOS
+  //   ClampingScrollPhysics()  -> berhenti tegas gaya Android
+  @override
+  ScrollPhysics getScrollPhysics(BuildContext context) {
+    return const BouncingScrollPhysics();
   }
 }
 
