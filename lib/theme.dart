@@ -54,9 +54,13 @@ class KptTheme {
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: Colors.white,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+      ),
+
+      // ── 7.1 — Gaya teks tajuk global (navy + bold) ──
+      textTheme: const TextTheme(
+        titleLarge: TextStyle(fontWeight: FontWeight.bold, color: navy),
+        titleMedium: TextStyle(fontWeight: FontWeight.w600, color: navy),
       ),
     );
   }

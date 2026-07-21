@@ -10,13 +10,30 @@ class ProgrammeListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      padding: const EdgeInsets.only(top: 8, bottom: 16),
-      itemCount: sampleProgrammes.length,
-      itemBuilder: (context, index) {
-        final p = sampleProgrammes[index];
-        return ProgrammeCard(programme: p);
-      },
+    return Column(
+      children: [
+        // 7.2 — Tajuk guna gaya GLOBAL (bukan TextStyle sebaris).
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Semua Tawaran Pengajian',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+          ),
+        ),
+        Expanded(
+          child: ListView.builder(
+            padding: const EdgeInsets.only(top: 4, bottom: 16),
+            itemCount: sampleProgrammes.length,
+            itemBuilder: (context, index) {
+              final p = sampleProgrammes[index];
+              return ProgrammeCard(programme: p);
+            },
+          ),
+        ),
+      ],
     );
   }
 }
