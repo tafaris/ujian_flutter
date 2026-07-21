@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'data/sample_programmes.dart';
 import 'theme.dart';
 import 'widgets/programme_card.dart';
-import 'screens/layout_playground_screen.dart';
+import 'screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'eTT Mobile',
       debugShowCheckedModeBanner: false,
       theme: KptTheme.light, // AppBar auto-navy, Card auto-bulat, dll.
-      home: const LayoutPlaygroundScreen(),
+      home: const HomeScreen(),
     );
   }
 }

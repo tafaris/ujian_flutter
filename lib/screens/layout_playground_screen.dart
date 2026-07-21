@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 
 import '../data/sample_programmes.dart';
-import '../widgets/programme_banner.dart';
 import '../widgets/programme_intake_tile.dart';
 
 class LayoutPlaygroundScreen extends StatelessWidget {
