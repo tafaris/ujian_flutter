@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../data/sample_programmes.dart';
 import '../widgets/programme_banner.dart';
+import '../widgets/programme_intake_tile.dart';
 
 class LayoutPlaygroundScreen extends StatelessWidget {
   const LayoutPlaygroundScreen({super.key});
@@ -19,7 +20,7 @@ class LayoutPlaygroundScreen extends StatelessWidget {
           for (final p in sampleProgrammes)
             Padding(
               padding: const EdgeInsets.only(bottom: 16),
-              child: ProgrammeBanner(programme: p),
+              child: ProgrammeIntakeTile(programme: p),
             ),
         ],
       ),

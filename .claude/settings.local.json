@@ -11,7 +11,8 @@
       "PowerShell(D:\\\\Flutter\\\\flutter\\\\bin\\\\flutter.bat analyze lib\\\\main.dart)",
       "PowerShell(New-Item *)",
       "PowerShell(D:\\\\Flutter\\\\flutter\\\\bin\\\\flutter.bat analyze lib 2>&1 | Out-String)",
-      "PowerShell(D:\\\\Flutter\\\\flutter\\\\bin\\\\flutter.bat analyze lib\\\\main.dart 2>&1 | Out-String)"
+      "PowerShell(D:\\\\Flutter\\\\flutter\\\\bin\\\\flutter.bat analyze lib\\\\main.dart 2>&1 | Out-String)",
+      "PowerShell(D:\\\\Flutter\\\\flutter\\\\bin\\\\flutter.bat analyze lib\\\\widgets\\\\programme_intake_tile.dart 2>&1 | Out-String)"
     ]
   }
 }
