@@ -108,8 +108,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   // Lapisan ATAS: "pill" di sudut kanan-atas, 12px dari tepi.
                   Positioned(
-                    top: 12,
-                    right: 12,
+                    bottom: 12,
+                    left: 12,
                     child: Container(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 10,
@@ -132,6 +132,32 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
               // =====================================================
+              const SizedBox(height: 12),
+
+              // ===== 3.2 ProgrammeBanner: gabungan Stack penuh =====
+              const ProgrammeBanner(
+                programme: Programme(
+                  universityName: 'Universiti Al-Azhar',
+                  fieldOfStudy: 'Perubatan (Medicine)',
+                  flagEmoji: '🇲🇦',
+                  category: EntryCategory.spm,
+                ),
+              ),
+              // =====================================================
+              const SizedBox(height: 12),
+
+              // ===== 3.3 ALIGN: satu anak di dalam ruang lebih besar =====
+              // Kotak selebar penuh, tinggi 40 -> ikon dilekat ke TENGAH-KANAN.
+              Container(
+                width: double.infinity,
+                height: 40,
+                color: Colors.grey.shade200,
+                child: const Align(
+                  alignment: Alignment(-1.0, 1.0),
+                  child: Icon(Icons.chevron_right, color: kNavy),
+                ),
+              ),
+              // ===========================================================
               const SizedBox(height: 12),
               const Text(
                 '🇪🇬  Universiti Al-Azhar',
@@ -165,6 +191,114 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
+    );
+  }
+}
+
+// ===== Warna tema (ganti KptTheme dalam nota) =====
+const kNavy = Color(0xFF1A2B5C);
+const kGold = Color(0xFFD4A017);
+
+// Kategori kemasukan eTT
+enum EntryCategory { spm, stam, spmOrStam }
+
+String categoryLabel(EntryCategory c) {
+  switch (c) {
+    case EntryCategory.spm:
+      return 'SPM';
+    case EntryCategory.stam:
+      return 'STAM';
+    case EntryCategory.spmOrStam:
+      return 'SPM atau STAM';
+  }
+}
+
+// Model data ringkas untuk satu tawaran pengajian
+class Programme {
+  const Programme({
+    required this.universityName,
+    required this.fieldOfStudy,
+    required this.flagEmoji,
+    required this.category,
+  });
+
+  final String universityName;
+  final String fieldOfStudy;
+  final String flagEmoji;
+  final EntryCategory category;
+}
+
+// Widget kecil yang boleh diguna semula: pill kategori kemasukan
+class CategoryPill extends StatelessWidget {
+  const CategoryPill({super.key, required this.category});
+
+  final EntryCategory category;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+      decoration: BoxDecoration(
+        color: kGold,
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Text(
+        categoryLabel(category),
+        style: const TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.bold,
+          color: kNavy,
+        ),
+      ),
+    );
+  }
+}
+
+// Banner program: Stack (banner navy + bendera + teks + pill kategori)
+class ProgrammeBanner extends StatelessWidget {
+  const ProgrammeBanner({super.key, required this.programme});
+
+  final Programme programme;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        // Lapisan bawah: "gambar" destinasi (warna sebagai placeholder)
+        Container(
+          height: 160,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: kNavy,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Center(
+            child: Text(
+              programme.flagEmoji,
+              style: const TextStyle(fontSize: 56),
+            ),
+          ),
+        ),
+        // Lapisan atas: universiti & bidang, dilabuhkan ke bawah kiri
+        Positioned(
+          left: 16,
+          top: 14,
+          child: Text(
+            '${programme.universityName}\n${programme.fieldOfStudy}',
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
+          ),
+        ),
+        // Pill kategori kemasukan, ditindan di sudut kanan atas
+        Positioned(
+          top: 12,
+          right: 12,
+          child: CategoryPill(category: programme.category),
+        ),
+      ],
     );
   }
 }
