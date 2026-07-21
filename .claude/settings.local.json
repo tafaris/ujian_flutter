@@ -8,7 +8,10 @@
       "PowerShell(powershell -NoProfile -ExecutionPolicy Bypass -File \"C:\\\\Users\\\\MOHE\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\D--Flutter-ujian-flutter\\\\a580b76d-a6b5-4b70-bfbe-f6dd602033c0\\\\scratchpad\\\\dl_ghfast.ps1\")",
       "PowerShell(Out-Null *)",
       "PowerShell($adb = \"C:\\\\Users\\\\MOHE\\\\AppData\\\\Local\\\\Android\\\\Sdk\\\\platform-tools\\\\adb.exe\"; for \\($i=0; $i -lt 12; $i++\\) { $b = \\(& $adb -s emulator-5554 shell getprop sys.boot_completed 2>$null\\).Trim\\(\\); if \\($b -eq \"1\"\\) { \"BOOTED - ready to go!\"; break }; \"still booting... \\($i\\)\"; Start-Sleep -Seconds 5 })",
-      "PowerShell(D:\\\\Flutter\\\\flutter\\\\bin\\\\flutter.bat analyze lib\\\\main.dart)"
+      "PowerShell(D:\\\\Flutter\\\\flutter\\\\bin\\\\flutter.bat analyze lib\\\\main.dart)",
+      "PowerShell(New-Item *)",
+      "PowerShell(D:\\\\Flutter\\\\flutter\\\\bin\\\\flutter.bat analyze lib 2>&1 | Out-String)",
+      "PowerShell(D:\\\\Flutter\\\\flutter\\\\bin\\\\flutter.bat analyze lib\\\\main.dart 2>&1 | Out-String)"
     ]
   }
 }

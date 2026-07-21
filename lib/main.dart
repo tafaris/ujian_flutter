@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'data/sample_programmes.dart';
+import 'models/programme.dart';
+import 'theme.dart';
+import 'widgets/programme_card.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -46,9 +51,10 @@ class _MyHomePageState extends State<MyHomePage> {
         centerTitle: true,
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             color: Colors.white,
@@ -60,6 +66,11 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text('Program disimpan: $_counter'),
+              const SizedBox(height: 12),
+
+              // ===== LATIHAN 1 — ProgrammeSummaryRow (dah dibetulkan Expanded) =====
+              ProgrammeSummaryRow(programme: sampleProgrammes[6]),
+              // ====================================================================
               const SizedBox(height: 12),
 
               // ===== 2.2 EXPANDED: teks pertama "menolak diri" + dipotong … =====
@@ -135,14 +146,7 @@ class _MyHomePageState extends State<MyHomePage> {
               const SizedBox(height: 12),
 
               // ===== 3.2 ProgrammeBanner: gabungan Stack penuh =====
-              const ProgrammeBanner(
-                programme: Programme(
-                  universityName: 'Universiti Al-Azhar',
-                  fieldOfStudy: 'Perubatan (Medicine)',
-                  flagEmoji: '🇲🇦',
-                  category: EntryCategory.spm,
-                ),
-              ),
+              ProgrammeBanner(programme: sampleProgrammes.first),
               // =====================================================
               const SizedBox(height: 12),
 
@@ -154,7 +158,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Colors.grey.shade200,
                 child: const Align(
                   alignment: Alignment(-1.0, 1.0),
-                  child: Icon(Icons.chevron_right, color: kNavy),
+                  child: Icon(Icons.chevron_right, color: KptTheme.navy),
                 ),
               ),
               // ===========================================================
@@ -185,6 +189,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
         ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
@@ -195,66 +200,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-// ===== Warna tema (ganti KptTheme dalam nota) =====
-const kNavy = Color(0xFF1A2B5C);
-const kGold = Color(0xFFD4A017);
-
-// Kategori kemasukan eTT
-enum EntryCategory { spm, stam, spmOrStam }
-
-String categoryLabel(EntryCategory c) {
-  switch (c) {
-    case EntryCategory.spm:
-      return 'SPM';
-    case EntryCategory.stam:
-      return 'STAM';
-    case EntryCategory.spmOrStam:
-      return 'SPM atau STAM';
-  }
-}
-
-// Model data ringkas untuk satu tawaran pengajian
-class Programme {
-  const Programme({
-    required this.universityName,
-    required this.fieldOfStudy,
-    required this.flagEmoji,
-    required this.category,
-  });
-
-  final String universityName;
-  final String fieldOfStudy;
-  final String flagEmoji;
-  final EntryCategory category;
-}
-
-// Widget kecil yang boleh diguna semula: pill kategori kemasukan
-class CategoryPill extends StatelessWidget {
-  const CategoryPill({super.key, required this.category});
-
-  final EntryCategory category;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-      decoration: BoxDecoration(
-        color: kGold,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Text(
-        categoryLabel(category),
-        style: const TextStyle(
-          fontSize: 12,
-          fontWeight: FontWeight.bold,
-          color: kNavy,
-        ),
-      ),
-    );
-  }
-}
-
 // Banner program: Stack (banner navy + bendera + teks + pill kategori)
+// CategoryPill & Programme kini datang dari fail starter (import di atas).
 class ProgrammeBanner extends StatelessWidget {
   const ProgrammeBanner({super.key, required this.programme});
 
@@ -269,7 +216,7 @@ class ProgrammeBanner extends StatelessWidget {
           height: 160,
           width: double.infinity,
           decoration: BoxDecoration(
-            color: kNavy,
+            color: KptTheme.navy,
             borderRadius: BorderRadius.circular(16),
           ),
           child: Center(
@@ -299,6 +246,32 @@ class ProgrammeBanner extends StatelessWidget {
           child: CategoryPill(category: programme.category),
         ),
       ],
+    );
+  }
+}
+
+// ── LATIHAN 1 — Ringkasan program dengan Expanded (tiada overflow) ──
+class ProgrammeSummaryRow extends StatelessWidget {
+  const ProgrammeSummaryRow({super.key, required this.programme});
+
+  final Programme programme;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Row(
+        children: [
+          Expanded(
+            child: Text(
+              programme.universityName,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          Text(' — ${programme.city}, ${programme.countryLabel}'),
+        ],
+      ),
     );
   }
 }
