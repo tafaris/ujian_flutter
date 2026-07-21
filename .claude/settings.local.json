@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($p = \"$env:USERPROFILE\\\\.gradle\\\\gradle.properties\"; if \\(Test-Path $p\\) { \"EXISTS:\"; Get-Content $p } else { \"NO GLOBAL gradle.properties\" }; \"---WININET PROXY---\"; Get-ItemProperty 'HKCU:\\\\Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Internet Settings' | Select-Object ProxyEnable, ProxyServer)",
+      "PowerShell(Stop-Process *)",
+      "PowerShell(Get-Process *)",
+      "PowerShell(powershell -NoProfile -ExecutionPolicy Bypass -File \"C:\\\\Users\\\\MOHE\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\D--Flutter-ujian-flutter\\\\a580b76d-a6b5-4b70-bfbe-f6dd602033c0\\\\scratchpad\\\\dl_gradle.ps1\")",
+      "PowerShell(powershell -NoProfile -ExecutionPolicy Bypass -File \"C:\\\\Users\\\\MOHE\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\D--Flutter-ujian-flutter\\\\a580b76d-a6b5-4b70-bfbe-f6dd602033c0\\\\scratchpad\\\\dl_ghfast.ps1\")",
+      "PowerShell(Out-Null *)",
+      "PowerShell($adb = \"C:\\\\Users\\\\MOHE\\\\AppData\\\\Local\\\\Android\\\\Sdk\\\\platform-tools\\\\adb.exe\"; for \\($i=0; $i -lt 12; $i++\\) { $b = \\(& $adb -s emulator-5554 shell getprop sys.boot_completed 2>$null\\).Trim\\(\\); if \\($b -eq \"1\"\\) { \"BOOTED - ready to go!\"; break }; \"still booting... \\($i\\)\"; Start-Sleep -Seconds 5 })",
+      "PowerShell(D:\\\\Flutter\\\\flutter\\\\bin\\\\flutter.bat analyze lib\\\\main.dart)"
+    ]
+  }
+}
