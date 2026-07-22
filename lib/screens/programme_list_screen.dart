@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../data/sample_programmes.dart';
 import '../widgets/programme_card.dart';
+import 'programme_detail_screen.dart';
 
 class ProgrammeListScreen extends StatelessWidget {
   const ProgrammeListScreen({super.key});
@@ -29,7 +30,14 @@ class ProgrammeListScreen extends StatelessWidget {
             itemCount: sampleProgrammes.length,
             itemBuilder: (context, index) {
               final p = sampleProgrammes[index];
-              return ProgrammeCard(programme: p);
+              return ProgrammeCard(
+                programme: p,
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => ProgrammeDetailScreen(programme: p),
+                  ),
+                ),
+              );
             },
           ),
         ),
