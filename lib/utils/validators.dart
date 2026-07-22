@@ -84,3 +84,10 @@ String? validatePhoneNumber(String? value) {
   }
   return null;
 }
+
+String? validateAcademicSummary(String? value) {
+  if (value == null || value.trim().isEmpty) {
+    return 'Ringkasan keputusan diperlukan';
+  }
+  return null;
+}
