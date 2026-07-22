@@ -17,7 +17,8 @@
       "PowerShell(D:\\\\Flutter\\\\flutter\\\\bin\\\\flutter.bat analyze lib\\\\theme.dart 2>&1 | Out-String)",
       "Bash(flutter analyze *)",
       "Bash(git -C \"D:/Flutter/kelas-flutter-5-hari\" pull)",
-      "Bash(git -C \"D:/Flutter/kelas-flutter-5-hari\" diff 05df014..c24cfde -- hari-3/snippets/lab.md)"
+      "Bash(git -C \"D:/Flutter/kelas-flutter-5-hari\" diff 05df014..c24cfde -- hari-3/snippets/lab.md)",
+      "Bash(git -C \"D:/Flutter/kelas-flutter-5-hari\" diff c24cfde..25c3c14 -- hari-3/snippets/lab.md)"
     ]
   }
 }

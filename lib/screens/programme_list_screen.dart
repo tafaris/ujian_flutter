@@ -7,10 +7,17 @@ import '../widgets/programme_card.dart';
 import 'programme_detail_screen.dart';
 
 class ProgrammeListScreen extends StatelessWidget {
-  const ProgrammeListScreen({super.key});
+  const ProgrammeListScreen({super.key, this.countryFilter});
+
+  /// null = semua negara; 'Egypt' / 'Morocco' = tapis negara itu sahaja.
+  final String? countryFilter;
 
   @override
   Widget build(BuildContext context) {
+    final items = countryFilter == null
+        ? sampleProgrammes
+        : sampleProgrammes.where((p) => p.country == countryFilter).toList();
+
     return Column(
       children: [
         // 7.2 — Tajuk guna gaya GLOBAL (bukan TextStyle sebaris).
@@ -27,9 +34,9 @@ class ProgrammeListScreen extends StatelessWidget {
         Expanded(
           child: ListView.builder(
             padding: const EdgeInsets.only(top: 4, bottom: 16),
-            itemCount: sampleProgrammes.length,
+            itemCount: items.length,
             itemBuilder: (context, index) {
-              final p = sampleProgrammes[index];
+              final p = items[index];
               return ProgrammeCard(
                 programme: p,
                 onTap: index == 0

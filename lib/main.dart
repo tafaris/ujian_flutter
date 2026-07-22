@@ -6,6 +6,7 @@ import 'widgets/programme_card.dart';
 import 'screens/home_screen.dart';
 import 'screens/programme_detail_screen.dart';
 import 'models/programme.dart';
+import 'widgets/lifecycle_demo.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,6 +29,14 @@ class MyApp extends StatelessWidget {
           final programme = settings.arguments as Programme;
           return MaterialPageRoute(
             builder: (_) => ProgrammeDetailScreen(programme: programme),
+          );
+        }
+        if (settings.name == '/lifecycle') {
+          return MaterialPageRoute(
+            builder: (_) => Scaffold(
+              appBar: AppBar(title: const Text('Demo Lifecycle Hayat')),
+              body: const Center(child: LifecycleDemo()),
+            ),
           );
         }
         return null; // laluan tidak dikenali

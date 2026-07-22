@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import '../models/programme.dart';
 import '../models/application.dart';
 import 'application_form_screen.dart';
-import '../widgets/lifecycle_demo.dart ';
 
 class ProgrammeDetailScreen extends StatefulWidget {
   const ProgrammeDetailScreen({super.key, required this.programme});
@@ -42,8 +41,6 @@ class _ProgrammeDetailScreenState extends State<ProgrammeDetailScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text('${widget.programme.city}, ${widget.programme.countryLabel}'),
-            const SizedBox(height: 20),
-            const LifecycleDemo(),
             const SizedBox(height: 20),
             FilledButton.icon(
               onPressed: _sudahMohon ? null : _mohon,
