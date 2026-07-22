@@ -4,6 +4,8 @@ import 'data/sample_programmes.dart';
 import 'theme.dart';
 import 'widgets/programme_card.dart';
 import 'screens/home_screen.dart';
+import 'screens/programme_detail_screen.dart';
+import 'models/programme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,6 +23,15 @@ class MyApp extends StatelessWidget {
       theme: KptTheme.light, // AppBar auto-navy, Card auto-bulat, dll.
       scrollBehavior: const AppScrollBehavior(), // <-- cuba tukar di kelas ni
       home: const HomeScreen(),
+      onGenerateRoute: (settings) {
+        if (settings.name == '/detail') {
+          final programme = settings.arguments as Programme;
+          return MaterialPageRoute(
+            builder: (_) => ProgrammeDetailScreen(programme: programme),
+          );
+        }
+        return null; // laluan tidak dikenali
+      },
     );
   }
 }

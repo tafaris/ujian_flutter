@@ -32,11 +32,15 @@ class ProgrammeListScreen extends StatelessWidget {
               final p = sampleProgrammes[index];
               return ProgrammeCard(
                 programme: p,
-                onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (_) => ProgrammeDetailScreen(programme: p),
-                  ),
-                ),
+                onTap: index == 0
+                    ? () => Navigator.of(
+                        context,
+                      ).pushNamed('/detail', arguments: p)
+                    : () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => ProgrammeDetailScreen(programme: p),
+                        ),
+                      ),
               );
             },
           ),
