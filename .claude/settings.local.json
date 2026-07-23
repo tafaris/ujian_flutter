@@ -18,7 +18,12 @@
       "Bash(flutter analyze *)",
       "Bash(git -C \"D:/Flutter/kelas-flutter-5-hari\" pull)",
       "Bash(git -C \"D:/Flutter/kelas-flutter-5-hari\" diff 05df014..c24cfde -- hari-3/snippets/lab.md)",
-      "Bash(git -C \"D:/Flutter/kelas-flutter-5-hari\" diff c24cfde..25c3c14 -- hari-3/snippets/lab.md)"
+      "Bash(git -C \"D:/Flutter/kelas-flutter-5-hari\" diff c24cfde..25c3c14 -- hari-3/snippets/lab.md)",
+      "Bash(flutter pub *)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" \"https://gh-proxy.com/https://raw.githubusercontent.com/habibtalib/kelas-flutter-5-hari/main/projek/mock-api/programmes.json\")",
+      "Bash(curl -s \"https://gh-proxy.com/https://raw.githubusercontent.com/habibtalib/kelas-flutter-5-hari/main/projek/mock-api/programmes.json\")",
+      "Bash(curl -s -o /dev/null -w 'HTTP %{http_code}\\\\n' https://gh-proxy.com/https://raw.githubusercontent.com/habibtalib/kelas-flutter-5-hari/main/hari-4/snippets/programmes.json)",
+      "Bash(curl -s https://gh-proxy.com/https://raw.githubusercontent.com/habibtalib/kelas-flutter-5-hari/main/hari-4/snippets/programmes.json)"
     ]
   }
 }

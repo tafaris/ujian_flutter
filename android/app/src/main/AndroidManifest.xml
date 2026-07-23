@@ -1,4 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Diperlukan untuk panggilan rangkaian REST API (Hari 4) pada release build -->
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:label="ujian_flutter"
         android:name="${applicationName}"
